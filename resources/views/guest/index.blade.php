@@ -8,5 +8,15 @@
 </head>
 <body>
     Ini tampilan Guest
+
+    @foreach ($profil as $item)
+    <div style="border: 1px solid #ccc; margin: 10px; padding: 15px;">
+        <h3>{{ $item->nama_sekolah }}</h3>
+        <p>{{ Str::limit($item->sejarah, 100) }}</p>
+        <a href="{{ route('guest.show', $item->id) }}">Lihat Detail</a> |
+
+      
+    </div>
+@endforeach
 </body>
 </html>

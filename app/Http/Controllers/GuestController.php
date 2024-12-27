@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProfilSekolah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,9 @@ class GuestController extends Controller
     }
 
     public function guest(){
-        return view('guest.index');
+
+        $profil = ProfilSekolah::all();
+        return view('guest.index', compact('profil'));
     }
 
     public function Log(){
@@ -57,5 +60,11 @@ class GuestController extends Controller
     Auth::logout();
     return redirect('');
 }
+public function show($id)
+    {
+        $profil = ProfilSekolah::find($id);
+
+        return view('guest.show', compact('profil'));
+    }
 
 }
